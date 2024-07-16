@@ -5,11 +5,13 @@ const game_container = document.getElementById('game-container');
 const timeEl = document.getElementById('time');
 const scoreEl = document.getElementById('score');
 const exit_btn = document.getElementById('exit-btn');
+const gameOverEl = document.getElementById('game-over');
 let seconds = 0;
 let score = 0;
 let selected_insect = {};
 let gameInterval;
-let insectInterval;
+let insectIntervals = [];
+let insectElements = [];
 
 start_btn.addEventListener('click', () => screens[0].classList.add('up'));
 
@@ -33,11 +35,9 @@ function startGame() {
 
 function stopGame() {
     clearInterval(gameInterval);
-    clearInterval(insectInterval);
-    const insect = document.querySelector('.insect');
-    if (insect) {
-        insect.remove();
-    }
+    insectIntervals.forEach(interval => clearInterval(interval));
+    insectElements.forEach(element => element.remove());
+    gameOverEl.style.display = 'block';
 }
 
 function increaseTime() {
@@ -60,15 +60,17 @@ function createInsect() {
     insect.addEventListener('click', catchInsect);
 
     game_container.appendChild(insect);
+    insectElements.push(insect);
     moveInsect(insect);
 }
 
 function moveInsect(insect) {
-    insectInterval = setInterval(() => {
+    const interval = setInterval(() => {
         const { x, y } = getRandomLocation();
         insect.style.top = `${y}px`;
         insect.style.left = `${x}px`;
     }, 1000);
+    insectIntervals.push(interval);
 }
 
 function getRandomLocation() {
