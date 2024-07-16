@@ -65,11 +65,13 @@ function createInsect() {
 }
 
 function moveInsect(insect) {
-    const interval = setInterval(() => {
+    function move() {
         const { x, y } = getRandomLocation();
         insect.style.top = `${y}px`;
         insect.style.left = `${x}px`;
-    }, 1000);
+    }
+    move();
+    const interval = setInterval(move, 1000);
     insectIntervals.push(interval);
 }
 
@@ -85,7 +87,7 @@ function catchInsect() {
     increaseScore();
     this.classList.add('caught');
     setTimeout(() => this.remove(), 2000);
-    setTimeout(createInsect, 1000);
+    createInsect();
 }
 
 function increaseScore() {
