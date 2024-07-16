@@ -137,15 +137,20 @@ h1 {
   width: 100px;
   height: 100px;
   position: absolute;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.insect.caught {
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease-in-out, top 1s linear, left 1s linear;
 }
 
 .insect img {
   width: 100px;
   height: 100px;
+}
+
+.game-over {
+  display: none;
+  font-size: 72px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
