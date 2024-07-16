@@ -138,7 +138,7 @@ h1 {
   height: 100px;
   position: absolute;
   transform: translate(-50%, -50%);
-  transition: transform 0.3s ease-in-out, top 1s linear, left 1s linear;
+  transition: top 1s linear, left 1s linear;
 }
 
 .insect img {
@@ -153,4 +153,5 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: red;
 }
