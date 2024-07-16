@@ -108,24 +108,25 @@ h1 {
   right: 20px;
 }
 
-.message {
-  line-height: 1.7;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  padding: 20px;
-  z-index: 100;
-  text-align: center;
-  opacity: 0;
+.exit-btn {
+  border: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 15px;
+  font-family: inherit;
+  cursor: pointer;
   position: absolute;
-  top: 0;
+  bottom: 20px;
   left: 50%;
-  transform: translate(-50%, -150%);
-  transition: transform 0.4s ease-in;
+  transform: translateX(-50%);
 }
 
-.message.visible {
-  transform: translate(-50%, 150%);
-  opacity: 1;
+.exit-btn:hover {
+  opacity: 0.9;
+}
+
+.exit-btn:focus {
+  outline: 0;
 }
 
 .insect {
