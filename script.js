@@ -85,8 +85,13 @@ function getRandomLocation() {
 
 function catchInsect() {
     increaseScore();
-    this.classList.add('caught');
-    setTimeout(() => this.remove(), 2000);
+    this.remove(); // Eliminate the clicked insect
+    const index = insectElements.indexOf(this);
+    if (index > -1) {
+        clearInterval(insectIntervals[index]);
+        insectIntervals.splice(index, 1);
+        insectElements.splice(index, 1);
+    }
     createInsect();
 }
 
